@@ -881,6 +881,18 @@ function PostModBlueprints(all_bps)
 
     -- re-computes all the LODs of various entities to match the LOD with the size of the entity.
     CalculateLODs(all_bps)
+
+    for k, unit in all_bps.Unit do 
+        if unit.Categories then 
+            for l, category in unit.Categories do 
+                if category == "SPECIALHIGHPRI" then 
+                    LOG("High priority unit: " .. tostring(unit.BlueprintId)  .. " (" .. tostring(unit.General.UnitName) .. ")")
+                elseif category == "SPECIALLOWPRI" then 
+                    LOG("Low priority unit: " .. tostring(unit.BlueprintId)  .. " (" .. tostring(unit.General.UnitName) .. ")")
+                end
+            end
+        end
+    end
 end
 -----------------------------------------------------------------------------------------------
 --- Loads all blueprints with optional parameters
